@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  kodeUser  String   @unique // Contoh: USR-001, USR-002
+  nama      String
+  email     String   @unique
+  alamat    String?
+  createdAt DateTime @default(now())
+}
